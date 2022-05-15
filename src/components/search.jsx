@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-const SearchBar = (props) => {
-  console.log(useState);
-
+const SearchBar = ({ searchTerm, handleUserInput }) => {
   return (
-    <form action="/" method="get">
-      <label htmlFor="header-search">
-      </label>
+    <form>
       <div className="search">
         <div className="search-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="rgb(177, 175, 175)" className="bi bi-search" viewBox="0 0 16 16">
@@ -18,14 +14,10 @@ const SearchBar = (props) => {
             type="text"
             id="header-search"
             className="mainLoginInput"
-            placeholder=""
-            value={props.searchTerm}
-            onChange={props.handleUserInput}
-            name="s"
+            value={searchTerm}
+            onChange={handleUserInput}
           />
         </div>
-        <button type="submit" className="button">
-        </button>
       </div>
     </form>
   );

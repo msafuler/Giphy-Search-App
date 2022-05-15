@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid } from '@giphy/react-components';
-import { GiphyFetch } from '@giphy/js-fetch-api';
 
-export default function Images(props) {
-  const gf = new GiphyFetch('pXUyjhupH5pR105ZMuPsx7mIxtDXak9A');
-  const fetchGifs = (offset) => gf.search(props.searchTerm, { offset, limit: 10 });
+export default function GiphyList({ searchTerm, gf, setSelectedGiphy }) {
+  const pickAgif = (e) => {
+    setSelectedGiphy(e);
+  };
+  const fetchGifs = (offset) => {
+    return gf.search(searchTerm, { offset, limit: 10 });
+  };
   return (
     <Grid
       width={520}
       columns={2}
       gutter={8}
       fetchGifs={fetchGifs}
-      key={props.searchTerm}
-      onGifClick={props.changeGiphy}
+      key={searchTerm}
       noLink={true}
+      hideAttribution={true}
+      onGifClick={pickAgif}
     />);
 }
